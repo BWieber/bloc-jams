@@ -28,6 +28,22 @@
      ]
  };
 
+ var albumBloc = {
+     title: 'Web Dev Hero',
+     artist: 'Bloc.IO',
+     label: 'California',
+     year: '2016',
+     albumArtUrl: 'assets/images/album_covers/bloc_logo.png',
+     songs: [
+         { title: 'Long Forgotten ;', duration: '2:53' },
+         { title: 'Stop Calling Back', duration: '10:01' },
+         { title: 'My Heart Loops Infinite For You', duration: '3:21'},
+         { title: 'HTML 6 is Born', duration: '3:14' },
+         { title: 'Java VS JavaScript', duration: '2:15'}
+     ]
+ };
+
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -39,6 +55,14 @@
  
      return template;
  };
+
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
 
 var setCurrentAlbum = function(album) {
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
@@ -61,4 +85,15 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     
+     var albums = [albumPicasso, albumMarconi, albumBloc];
+     var index = 1; 
+
+     albumImage.addEventListener("click", function(event) {
+         setCurrentAlbum(albums[index]);
+         index++;
+         if(index == albums.length) {
+             index = 0;
+         }
+     });
  };
