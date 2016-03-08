@@ -88,12 +88,16 @@ var setCurrentAlbum = function(album) {
      
      var albums = [albumPicasso, albumMarconi, albumBloc];
      var index = 1; 
-
-     albumImage.addEventListener("click", function(event) {
-         setCurrentAlbum(albums[index]);
-         index++;
-         if(index == albums.length) {
-             index = 0;
-         }
-     });
+     
+     function albumToggle () { 
+        setCurrentAlbum(albums[index]);
+        index++;
+        if(index === albums.length) { 
+            index = 0;
+        }
+     }
+     
+     albumImage.addEventListener("click", albumToggle);
  };
+
+
