@@ -93,15 +93,29 @@ window.onload = function() {
 
  };
 
+var child = document.getElementsByClassName('album-view-title')[0];
+var noParent = document.querySelector('html');
+
 var findParentByClassName = function(element, targetClass) {
-    if(element) {
-        var parent = element.parentElement;
-        while (parent.className != targetClass) {
-            parent = parent.parentElement;
+    var parent = element.parentElement;
+    
+        if(parent) {
+            while (parent.className && parent.className != targetClass) {
+                parent = parent.parentElement;
+            }
+                if (parent.className == targetClass) {
+                    alert('Parent Found');
+                } 
+                else {
+                    alert("No parent found with that class name");
+                }      
+        } 
+        else {
+            alert('No parent found')
         }
-        return parent;
-    }   
 };
+
+findParentByClassName(child, 'album-view');
 
 var getSongItem = function(element) {
     switch (element.className) {
