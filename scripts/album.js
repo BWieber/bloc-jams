@@ -108,8 +108,7 @@ var nextSong = function () {
     }
     
     var nextSong = currentAlbum.songs[nextSongIndex];
-    currentlyPlayingSongNumber = nextSongIndex;
-    currentSongFromAlbum = nextSong;
+    setSong(nextSongIndex)
     
     $('.currently-playing .song-name').text(nextSong.title);
     $('.currently-playing .artist-name').text(nextSong.artist);
@@ -133,13 +132,12 @@ var previousSong = function () {
 
     var prevSongIndex = currentSongIndex -1;
     
-    if (prevSongIndex < 0) {
-        prevSongIndex = albumLength - 1;
+    if (prevSongIndex == -1) {
+        prevSongIndex = (albumLength - 1);
     }
     
     var prevSong = currentAlbum.songs[prevSongIndex];
-    currentlyPlayingSongNumber = prevSongIndex;
-    currentSongFromAlbum = prevSong;
+    setSong(prevSongIndex);
     
     $('.currently-playing .song-name').text(prevSong.title);
     $('.currently-playing .artist-name').text(prevSong.artist);
@@ -155,6 +153,15 @@ var previousSong = function () {
     $lastSongItem.html(currentSongIndex + 1);
       
 };
+
+var setSong = function(songNumber) {
+    var albumLength = (currentAlbum.songs).length;
+    var songValue = songNumber;
+
+    currentlyPlayingSongNumber = songValue;
+    currentSongFromAlbum = currentAlbum.songs[songValue];
+};
+
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 
