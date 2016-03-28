@@ -140,6 +140,10 @@ var nextSong = function () {
 
     $prevSongItem.html(prevSongIndex + 1);
     
+    currentSoundFile.play();   
+    updateSeekBarWhileSongPlays();
+
+    
 }
 
 var previousSong = function () {
@@ -167,6 +171,10 @@ var previousSong = function () {
     $prevSongItem.html(pauseButtonTemplate);
 
     $lastSongItem.html(currentSongIndex + 1);
+    
+    currentSoundFile.play(); 
+    updateSeekBarWhileSongPlays();
+
       
 };
 
