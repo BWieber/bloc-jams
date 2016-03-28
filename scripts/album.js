@@ -293,14 +293,11 @@ $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     setupSeekBars();
     $previousButton.click(previousSong);
-<<<<<<< HEAD
-    $nextButton.click(nextSong);   
-=======
+
     $nextButton.click(nextSong);
     
     $playPauseButton.click(toggleFromPlayerBar);
     
->>>>>>> assignment-33
 });
 
 
